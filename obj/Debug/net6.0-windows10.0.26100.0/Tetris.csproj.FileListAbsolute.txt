@@ -22,3 +22,4 @@ C:\Users\miojo\source\repos\Tetris\obj\Debug\net6.0-windows10.0.26100.0\refint\T
 C:\Users\miojo\source\repos\Tetris\obj\Debug\net6.0-windows10.0.26100.0\Tetris.pdb
 C:\Users\miojo\source\repos\Tetris\obj\Debug\net6.0-windows10.0.26100.0\Tetris.genruntimeconfig.cache
 C:\Users\miojo\source\repos\Tetris\obj\Debug\net6.0-windows10.0.26100.0\ref\Tetris.dll
+C:\Users\miojo\source\repos\Tetris\obj\Debug\net6.0-windows10.0.26100.0\Tetris.sourcelink.json
