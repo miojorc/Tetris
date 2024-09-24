@@ -135,13 +135,15 @@ namespace Tetris
 
       int[] inverter = new int[4];
 
-      int esq = 0;
+      int esq = 0; //faz com que o bloco gire apartir da camada 'array'-esq
+      int constSubtraction = -1;
 
       //configuração para cada bloco, má pratica necessaria
       if(ActualBlockType == 5) esq = 1;
+      if(ActualBlockType == 4) esq = 1;
 
 
-      if((ActualBlockType == 2 || ActualBlockType == 4)) esq = (rotate == 0 || rotate == 1) ? 1 : 0;
+      if(ActualBlockType == 2) esq = (rotate == 0 || rotate == 1) ? 1 : 0;
       else if (ActualBlockType == 6) esq =  rotate == 0 ? 2 : 1;
 
       if(rotate == 0 || rotate == 2)
@@ -151,8 +153,8 @@ namespace Tetris
           for(int r = 0; r < R[i]; r++)
           {
             if(i >= (R.Length-esq)) {
-              if(rotate == 0) Block[arrayCont] = new Position(ActualBlock[0].Row+i, ActualBlock[0].Col+( r-1 ));
-              else            Block[arrayCont] = new Position(ActualBlock[0].Row-i, ActualBlock[0].Col-( r-1 ));
+              if(rotate == 0) Block[arrayCont] = new Position(ActualBlock[0].Row+i, ActualBlock[0].Col+( r+constSubtraction ));
+              else            Block[arrayCont] = new Position(ActualBlock[0].Row-i, ActualBlock[0].Col-( r+constSubtraction ));
             }
             else 
             {
@@ -166,13 +168,14 @@ namespace Tetris
       
       if(rotate == 1 || rotate == 3)
       {
+        if(ActualBlockType == 4) constSubtraction = 1;
         for (int i = 0; i < R.Length; i++) 
         {
           for(int r = 0; r < R[i]; r++)
           {
             if(i >= (R.Length-esq)) {
-              if(rotate == 1) Block[arrayCont] = new Position(ActualBlock[0].Row+(r-1), ActualBlock[0].Col+i);
-              else            Block[arrayCont] = new Position(ActualBlock[0].Row-(r-1), ActualBlock[0].Col-i);
+              if(rotate == 1) Block[arrayCont] = new Position(ActualBlock[0].Row+(r+constSubtraction), ActualBlock[0].Col+i);
+              else            Block[arrayCont] = new Position(ActualBlock[0].Row-(r+constSubtraction), ActualBlock[0].Col-i);
             }
             else 
             {
@@ -197,6 +200,5 @@ namespace Tetris
       ActualBlock = RotateActualBlock(IntToBlockConfig[ActualBlockType]); //testar, ultima mudança foi mudar o tipo e dar retorno em vez de mudança no codigo
       DrawBlock(); //ultima linha do RotateActualBlock
     }
-
   }
 }
