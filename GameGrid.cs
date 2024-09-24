@@ -147,6 +147,7 @@ namespace Tetris
 
       if(rotate == 0 || rotate == 2)
       {
+        if(ActualBlockType == 1) constSubtraction = 1;
         for (int i = 0; i < R.Length; i++) 
         {
           for(int r = 0; r < R[i]; r++)
@@ -168,6 +169,7 @@ namespace Tetris
       if(rotate == 1 || rotate == 3)
       {
         if(ActualBlockType == 4) constSubtraction = 1;
+        if(ActualBlockType == 1) esq = 1;
         for (int i = 0; i < R.Length; i++) 
         {
           for(int r = 0; r < R[i]; r++)

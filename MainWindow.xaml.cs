@@ -105,7 +105,7 @@ namespace Tetris
     private async Task RunGame()
     {
       GenerateBlocks();
-      gameGrid.GenerateBlock(2); //blocksGenerator.intBlocks[0]
+      gameGrid.GenerateBlock(1); //blocksGenerator.intBlocks[0]
       //blocksGenerator.ImageBlock(true);
       while(true)
       {
