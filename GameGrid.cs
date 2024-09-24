@@ -138,12 +138,11 @@ namespace Tetris
       int esq = 0; //faz com que o bloco gire apartir da camada 'array'-esq
       int constSubtraction = -1;
 
-      //configuração para cada bloco, má pratica necessaria
+      //configuração para cada bloco, má pratica necessaria para teste (n tinha deixado isso claro)
       if(ActualBlockType == 5) esq = 1;
       if(ActualBlockType == 4) esq = 1;
+      if(ActualBlockType == 2) esq = (rotate == 1 || rotate == 3) ? 1 : 0;
 
-
-      if(ActualBlockType == 2) esq = (rotate == 0 || rotate == 1) ? 1 : 0;
       else if (ActualBlockType == 6) esq =  rotate == 0 ? 2 : 1;
 
       if(rotate == 0 || rotate == 2)
