@@ -116,7 +116,8 @@ namespace Tetris
       {
         for(int r = 0; r < R[i]; r++)
         {
-          if(i >= (R.Length-esq)) {
+          if(i == (R.Length-esq)) 
+          {
             Block[arrayCont] = new Position(i, HalfCols + ( r-1 ));
           }
           else Block[arrayCont] = new Position(i,HalfCols+r);
@@ -133,7 +134,7 @@ namespace Tetris
       Position[] Block = new Position[4];
       int arrayCont = 0;
 
-      int[] inverter = new int[4];
+      //ele servia para rotacionar o bloco no rotate 2 e 3
 
       int esq = 0; //faz com que o bloco gire apartir da camada 'array'-esq
       int constSubtraction = -1;
@@ -141,9 +142,12 @@ namespace Tetris
       //configuração para cada bloco, má pratica necessaria para teste (n tinha deixado isso claro)
       if(ActualBlockType == 5) esq = 1;
       if(ActualBlockType == 4) esq = 1;
-      if(ActualBlockType == 2) esq = (rotate == 1 || rotate == 3) ? 1 : 0;
+      if(ActualBlockType == 1) esq = (rotate == 1 || rotate == 3) ? 1 : 0;
+      if(ActualBlockType == 2) esq = (rotate == 0 || rotate == 2) ? 1 : 0; //já da para ver a regra da onde o esq original se aplica
 
-      else if (ActualBlockType == 6) esq =  rotate == 0 ? 2 : 1;
+      if (ActualBlockType == 6) {
+        esq = 2;
+      }
 
       if(rotate == 0 || rotate == 2)
       {
@@ -152,7 +156,7 @@ namespace Tetris
         {
           for(int r = 0; r < R[i]; r++)
           {
-            if(i >= (R.Length-esq)) {
+            if(i == (R.Length-esq)) {
               if(rotate == 0) Block[arrayCont] = new Position(ActualBlock[0].Row+i, ActualBlock[0].Col+( r+constSubtraction ));
               else            Block[arrayCont] = new Position(ActualBlock[0].Row-i, ActualBlock[0].Col-( r+constSubtraction ));
             }
@@ -168,13 +172,12 @@ namespace Tetris
       
       if(rotate == 1 || rotate == 3)
       {
-        if(ActualBlockType == 4) constSubtraction = 1;
-        if(ActualBlockType == 1) esq = 1;
+        if(ActualBlockType == 4 || ActualBlockType == 6) constSubtraction = 1;
         for (int i = 0; i < R.Length; i++) 
         {
           for(int r = 0; r < R[i]; r++)
           {
-            if(i >= (R.Length-esq)) {
+            if(i == (R.Length-esq)) {
               if(rotate == 1) Block[arrayCont] = new Position(ActualBlock[0].Row+(r+constSubtraction), ActualBlock[0].Col+i);
               else            Block[arrayCont] = new Position(ActualBlock[0].Row-(r+constSubtraction), ActualBlock[0].Col-i);
             }
