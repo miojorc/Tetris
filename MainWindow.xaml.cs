@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.Metadata;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -102,22 +103,40 @@ namespace Tetris
       return images;
     }
 
-    private async Task RunGame()
+    private bool AutoColide(int row, int col, int block) //concertar gerar bloco e colisão com blocos col
     {
-      GenerateBlocks();
-      gameGrid.GenerateBlock(6); //blocksGenerator.intBlocks[0] concertar 6
-      //blocksGenerator.ImageBlock(true);
-      while(true)
+      for(int i = 0; i < gameGrid.ActualBlock.Length; i++)
       {
-        gameGrid.DrawActualBlock();
-        DrawGrid();
-        if(gameGrid.ActualBlock[3].Row == rows-1) 
+        if(gameGrid.ActualBlock[block].Row+row == gameGrid.ActualBlock[i].Row && gameGrid.ActualBlock[block].Col+col == gameGrid.ActualBlock[i].Col) return true;
+      }
+      return false;
+    }
+
+    private void BlockInteractor(int row = 1, int col = 0)
+    {
+      for(int i = 0; i < gameGrid.ActualBlock.Length; i++)
+      {
+        if(gameGrid.ActualBlock[i].Row+row == rows || gameGrid.ActualBlock[i].Col+col == cols || (gameGrid.ActualBlock[i].Col+col == 0+col && col < 0) 
+        || (gameGrid.Grid[gameGrid.ActualBlock[i].Row+row, gameGrid.ActualBlock[i].Col+col] != GridValue.Empty && !AutoColide(row, col, i))) 
         {
           gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
           blocksGenerator.ImageBlock(true);
         }
+      }
+    } 
+
+    private async Task RunGame()
+    {
+      GenerateBlocks();
+      gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
+      blocksGenerator.ImageBlock(true);
+      while(true)
+      {
+        gameGrid.DrawActualBlock();
+        DrawGrid();
+        BlockInteractor();
+        gameGrid.DrawActualBlock(1);
         await Task.Delay(500);
-        //gameGrid.DrawActualBlock(1);
       }
     }
 
@@ -161,9 +180,11 @@ namespace Tetris
       switch(e.Key)
       {
         case Key.Left:
+          BlockInteractor(0, -1);
           gameGrid.DrawActualBlock(0, -1);
           break;
         case Key.Right:
+          BlockInteractor(0, 1);
           gameGrid.DrawActualBlock(0, 1);
           break;
         case Key.Up:
@@ -190,7 +211,6 @@ namespace Tetris
 
           image.Source = gridValToImage[gridVal];
           image.RenderTransform = Transform.Identity;
-
         }
       }
     }
