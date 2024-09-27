@@ -33,7 +33,7 @@ namespace Tetris
     private bool gameRuning;
 
     private readonly System.Windows.Controls.Image[,] gridImages;
-    //private readonly System.Windows.Controls.Image[,] AfterBlocks;
+    private readonly System.Windows.Controls.Image[,] AfterBlocks;
 
     private readonly Random random = new();
     private GameGrid gameGrid;
@@ -44,6 +44,7 @@ namespace Tetris
     {
       InitializeComponent();
       gridImages = SetupGrid();
+      AfterBlocks = GenerateBlocks();
       gameGrid = new GameGrid(rows, cols);
     }
 
@@ -93,7 +94,7 @@ namespace Tetris
         for(int r = 0; r < 3; r++){
           System.Windows.Controls.Image image = new System.Windows.Controls.Image
           {
-            Source = blocksGenerator.ImageBlock()[r],
+            Source = Images.Empty,
             RenderTransformOrigin = new System.Windows.Point(0.5, 0.5)
           };
           images[r,c] = image;
@@ -112,31 +113,41 @@ namespace Tetris
       return false;
     }
 
-    private void BlockInteractor(int row = 1, int col = 0)
+    private bool BlockInteractor(int row = 1, int col = 0)
     {
       for(int i = 0; i < gameGrid.ActualBlock.Length; i++)
       {
         if(gameGrid.ActualBlock[i].Row+row == rows || gameGrid.ActualBlock[i].Col+col == cols || (gameGrid.ActualBlock[i].Col+col == 0+col && col < 0) 
         || (gameGrid.Grid[gameGrid.ActualBlock[i].Row+row, gameGrid.ActualBlock[i].Col+col] != GridValue.Empty && !AutoColide(row, col, i))) 
         {
-          gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
-          blocksGenerator.ImageBlock(true);
+          return true;
         }
       }
+      return false;
     } 
 
     private async Task RunGame()
     {
-      GenerateBlocks();
+      blocksGenerator.RandomizeImageBlock();
+      blocksGenerator.ImageBlock(false);
+      DrawAfterBlocks();
       gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
-      blocksGenerator.ImageBlock(true);
       while(true)
       {
         gameGrid.DrawActualBlock();
         DrawGrid();
-        BlockInteractor();
-        gameGrid.DrawActualBlock(1);
-        await Task.Delay(500);
+        if(BlockInteractor())
+        {
+          DrawAfterBlocks(); //bugadp
+          gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
+          blocksGenerator.ImageBlock(true);
+          gameGrid.DrawActualBlock(); //não é necessario
+        }
+        else 
+        {
+          gameGrid.DrawActualBlock(1);
+          await Task.Delay(500);
+        }
       }
     }
 
@@ -180,21 +191,29 @@ namespace Tetris
       switch(e.Key)
       {
         case Key.Left:
-          BlockInteractor(0, -1);
-          gameGrid.DrawActualBlock(0, -1);
+          if(!BlockInteractor(0, -1)) gameGrid.DrawActualBlock(0, -1);
           break;
         case Key.Right:
-          BlockInteractor(0, 1);
-          gameGrid.DrawActualBlock(0, 1);
+          if(!BlockInteractor(0, 1)) gameGrid.DrawActualBlock(0, 1);
           break;
         case Key.Up:
           gameGrid.Rotate(true);
           break;
         case Key.Down:
-          gameGrid.Rotate(false);
+          gameGrid.DrawActualBlock(1);
           break;
         case Key.Space:
-          gameGrid.DrawActualBlock(1);
+          while(true)
+          {
+            if(!BlockInteractor(2))
+            {
+              gameGrid.DrawActualBlock(1);
+            }
+            else
+            {
+              break;
+            }
+          } 
           break;
       }
     }
@@ -205,12 +224,33 @@ namespace Tetris
       {
         for(int c = 0; c < cols; c++){
           GridValue gridVal = gameGrid.Grid[r,c];
-          Position gridPos = new Position(r,c);
+          Position gridPos = new Position(r,c); 
 
           System.Windows.Controls.Image image = gridImages[r,c];
 
           image.Source = gridValToImage[gridVal];
           image.RenderTransform = Transform.Identity;
+        }
+      }
+    }
+
+    private void DrawAfterBlocks()
+    {
+      for(int r = 0; r < 1; r++) //formalidade caso eu decida mudar depois
+      {
+        NewBlocksGrid.Children.Clear();
+        for(int c = 0; c < 3; c++){
+          Position gridPos = new Position(r,c); //eu lembro que isso era importante melhor deixar caso haja bugs
+
+          System.Windows.Controls.Image image = new System.Windows.Controls.Image
+          {
+            Source = blocksGenerator.ImageBlock()[c],
+            RenderTransformOrigin = new System.Windows.Point(0.5, 0.5) //Transform.Identity
+          };
+
+          // image.Source = blocksGenerator.ImageBlock()[r];
+          //image.RenderTransform = Transform.Identity;
+          NewBlocksGrid.Children.Add(image);
         }
       }
     }

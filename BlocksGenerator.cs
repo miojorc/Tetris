@@ -34,19 +34,27 @@ namespace Tetris
 
     private readonly Random random = new();
 
-    public int[] intBlocks = {7,7,7};
+    public int[] intBlocks = {2,4,3};
+
+    public void RandomizeImageBlock()
+    {
+      for(int i = 0; i < intBlocks.Length; i++)
+      {
+        intBlocks[i] = random.Next(0,6);
+      }
+    }
 
     public ImageSource[] ImageBlock(bool change = false)
     {
       if(change)
       {
         for(int i = 0; i < (intBlocks.Length-1); i++) intBlocks[i] = intBlocks[i+1];
-        intBlocks[(intBlocks.Length-1)] = random.Next(0,6);
+        intBlocks[^1] = random.Next(0,6);
       }
 
       ImageSource[] arrays =  new ImageSource[intBlocks.Length];
 
-      for(int i = 0; i < arrays.Length; i++) arrays[i] = IntToImage[(intBlocks[i])];
+      for(int i = 0; i < arrays.Length; i++) arrays[i] = IntToImage[intBlocks[i]];
 
       return arrays;
     }
