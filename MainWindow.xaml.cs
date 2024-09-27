@@ -245,11 +245,9 @@ namespace Tetris
           System.Windows.Controls.Image image = new System.Windows.Controls.Image
           {
             Source = blocksGenerator.ImageBlock()[c],
-            RenderTransformOrigin = new System.Windows.Point(0.5, 0.5) //Transform.Identity
+            RenderTransformOrigin = new System.Windows.Point(0.5, 0.5)
           };
 
-          // image.Source = blocksGenerator.ImageBlock()[r];
-          //image.RenderTransform = Transform.Identity;
           NewBlocksGrid.Children.Add(image);
         }
       }
