@@ -46,13 +46,16 @@ namespace Tetris
 
     public ImageSource[] ImageBlock(bool change = false)
     {
+      ImageSource[] arrays =  new ImageSource[intBlocks.Length];
+
       if(change)
       {
-        for(int i = 0; i < (intBlocks.Length-1); i++) intBlocks[i] = intBlocks[i+1];
+        for(int i = 0; i < (intBlocks.Length-1); i++) 
+        {
+          intBlocks[i] = intBlocks[i+1];
+        }
         intBlocks[^1] = random.Next(0,6);
       }
-
-      ImageSource[] arrays =  new ImageSource[intBlocks.Length];
 
       for(int i = 0; i < arrays.Length; i++) arrays[i] = IntToImage[intBlocks[i]];
 

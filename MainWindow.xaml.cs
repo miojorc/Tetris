@@ -36,7 +36,7 @@ namespace Tetris
     private readonly System.Windows.Controls.Image[,] AfterBlocks;
 
     private readonly Random random = new();
-    private GameGrid gameGrid;
+    private readonly GameGrid gameGrid;
 
     private BlocksGenerator blocksGenerator = new();
 
@@ -44,6 +44,7 @@ namespace Tetris
     {
       InitializeComponent();
       gridImages = SetupGrid();
+      blocksGenerator.RandomizeImageBlock();
       AfterBlocks = GenerateBlocks();
       gameGrid = new GameGrid(rows, cols);
     }
@@ -126,10 +127,31 @@ namespace Tetris
       return false;
     } 
 
+    void CleanLines()
+    {
+      bool deleteLine = true;
+      for(int r = 0; r < rows; r++)
+      {
+        deleteLine = true;
+        for(int c = 0; c < cols; c++){
+          if(gameGrid.Grid[r,c] == GridValue.Empty) deleteLine = false;
+        }
+        if(deleteLine)
+        {
+          for(int c = 0; c < cols; c++){
+            gameGrid.Grid[r,c] = GridValue.Empty;
+          }
+          for(int c = 0; c < cols; c++){
+            gameGrid.Grid[r,c] = gameGrid.Grid[r-1,c];
+          }
+          r--;
+        }
+      }
+    }
+
     private async Task RunGame()
     {
-      blocksGenerator.RandomizeImageBlock();
-      blocksGenerator.ImageBlock(false);
+      blocksGenerator.ImageBlock(true);
       DrawAfterBlocks();
       gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
       while(true)
@@ -140,13 +162,14 @@ namespace Tetris
         {
           DrawAfterBlocks(); //bugadp
           gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
+          gameGrid.rotate = 0;
           blocksGenerator.ImageBlock(true);
-          gameGrid.DrawActualBlock(); //não é necessario
+          CleanLines();
         }
         else 
         {
           gameGrid.DrawActualBlock(1);
-          await Task.Delay(500);
+          await Task.Delay(300);
         }
       }
     }
@@ -240,8 +263,6 @@ namespace Tetris
       {
         NewBlocksGrid.Children.Clear();
         for(int c = 0; c < 3; c++){
-          Position gridPos = new Position(r,c); //eu lembro que isso era importante melhor deixar caso haja bugs
-
           System.Windows.Controls.Image image = new System.Windows.Controls.Image
           {
             Source = blocksGenerator.ImageBlock()[c],

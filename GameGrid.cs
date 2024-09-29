@@ -64,13 +64,13 @@ namespace Tetris
     private void Setup()
     {
       rotate = 0; //segurança em primeiro lugar
-      Blocks[0] = GBlock(IntToBlockConfig[0]);
-      Blocks[1] = GBlock(IntToBlockConfig[1]); 
-      Blocks[2] = GBlock(IntToBlockConfig[2], 1); 
-      Blocks[3] = GBlock(IntToBlockConfig[3]); 
-      Blocks[4] = GBlock(IntToBlockConfig[4], 1); 
-      Blocks[5] = GBlock(IntToBlockConfig[5], 1); 
-      Blocks[6] = GBlock(IntToBlockConfig[6], 2); 
+      Blocks[0] = GBlock(IntToBlockConfig[0]); //I
+      Blocks[1] = GBlock(IntToBlockConfig[1]); //L
+      Blocks[2] = GBlock(IntToBlockConfig[2], 1); //J
+      Blocks[3] = GBlock(IntToBlockConfig[3]); //O
+      Blocks[4] = GBlock(IntToBlockConfig[4], 1); //S
+      Blocks[5] = GBlock(IntToBlockConfig[5], 1); //T
+      Blocks[6] = GBlock(IntToBlockConfig[6], 2); //Z
     }
 
     public void GenerateBlock(int TB)
@@ -139,9 +139,7 @@ namespace Tetris
       int esq = 0; //faz com que o bloco gire apartir da camada 'array'-esq
       int constSubtraction = -1;
 
-      //configuração para cada bloco, má pratica necessaria para teste (n tinha deixado isso claro)
-      if(ActualBlockType == 5) esq = 1;
-      if(ActualBlockType == 4) esq = 1;
+      if(ActualBlockType == 5 || ActualBlockType == 4) esq = 1;
       if(ActualBlockType == 1) esq = (rotate == 1 || rotate == 3) ? 1 : 0;
       if(ActualBlockType == 2) esq = (rotate == 0 || rotate == 2) ? 1 : 0; //já da para ver a regra da onde o esq original se aplica
 
@@ -196,13 +194,16 @@ namespace Tetris
 
     public void Rotate(bool Dir)
     {
-      if(rotate != 3 && Dir) rotate +=  1;
-      else if(rotate != 0 && !Dir) rotate -= 1;
-      else if (rotate == 3) rotate = 0;
-      else rotate = 3;
+      if(ActualBlockType != 3)
+      {
+        if(rotate != 3 && Dir) rotate +=  1;
+        else if(rotate != 0 && !Dir) rotate -= 1;
+        else if (rotate == 3) rotate = 0;
+        else rotate = 3;
 
-      ActualBlock = RotateActualBlock(IntToBlockConfig[ActualBlockType]); //testar, ultima mudança foi mudar o tipo e dar retorno em vez de mudança no codigo
-      DrawBlock(); //ultima linha do RotateActualBlock
+        ActualBlock = RotateActualBlock(IntToBlockConfig[ActualBlockType]); //testar, ultima mudança foi mudar o tipo e dar retorno em vez de mudança no codigo
+        DrawBlock(); //ultima linha do RotateActualBlock
+      }
     }
   }
 }
