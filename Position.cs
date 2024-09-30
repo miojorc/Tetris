@@ -17,10 +17,8 @@ namespace Tetris
       Col = col;
     }
 
-    /*public Position Translate(Direction dir)
-    {
-      return new Position(Row + dir.RowOffSet, Col + dir.ColOffSet);
-    }*/
+    //isso era de um outro projeto meu do SnakeGame, feito com ajuda de um video do OttoBotoCode
+    //e eu esqueci de tirar depois que vi que n era util 
 
     //Hash code
     public override bool Equals(object obj)

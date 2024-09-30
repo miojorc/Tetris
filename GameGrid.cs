@@ -75,6 +75,8 @@ namespace Tetris
 
     public void GenerateBlock(int TB)
     {
+      Setup();
+
       Color = IntToColor[TB];
       ActualBlockType = TB;
       ActualBlock = Blocks[TB];

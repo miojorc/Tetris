@@ -138,11 +138,15 @@ namespace Tetris
         }
         if(deleteLine)
         {
+          Testador.Text += "B";
           for(int c = 0; c < cols; c++){
             gameGrid.Grid[r,c] = GridValue.Empty;
           }
-          for(int c = 0; c < cols; c++){
-            gameGrid.Grid[r,c] = gameGrid.Grid[r-1,c];
+          for(int R = r; R < rows; R++)
+          {
+            for(int c = 0; c < cols; c++){
+              gameGrid.Grid[R,c] = gameGrid.Grid[R-1,c]; 
+            }
           }
           r--;
         }
@@ -160,9 +164,9 @@ namespace Tetris
         DrawGrid();
         if(BlockInteractor())
         {
-          DrawAfterBlocks(); //bugadp
+          DrawAfterBlocks(); 
+          Testador.Text += "I";
           gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
-          gameGrid.rotate = 0;
           blocksGenerator.ImageBlock(true);
           CleanLines();
         }
