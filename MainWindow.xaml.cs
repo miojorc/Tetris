@@ -142,11 +142,15 @@ namespace Tetris
           for(int c = 0; c < cols; c++){
             gameGrid.Grid[r,c] = GridValue.Empty;
           }
-          for(int R = r; R < rows; R++)
+          bool Up = false;
+          for(int R = r; R > 1; R--)
           {
+            Up = false;
             for(int c = 0; c < cols; c++){
               gameGrid.Grid[R,c] = gameGrid.Grid[R-1,c]; 
+              if(gameGrid.Grid[R,c] != GridValue.Empty) Up = true;
             }
+            if(Up == false) break;
           }
           r--;
         }
@@ -157,7 +161,7 @@ namespace Tetris
     {
       blocksGenerator.ImageBlock(true);
       DrawAfterBlocks();
-      gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
+      gameGrid.GenerateBlock(0); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
       while(true)
       {
         gameGrid.DrawActualBlock();
@@ -166,7 +170,7 @@ namespace Tetris
         {
           DrawAfterBlocks(); 
           Testador.Text += "I";
-          gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
+          gameGrid.GenerateBlock(0);
           blocksGenerator.ImageBlock(true);
           CleanLines();
         }
