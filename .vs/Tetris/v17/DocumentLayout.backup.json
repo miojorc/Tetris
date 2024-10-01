@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\miojo\\source\\repos\\Tetris\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\gamegrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:gamegrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,16 +15,16 @@
       "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:tetris.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\gamegrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:gamegrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\blocksgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:blocksgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\gridvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:gridvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\blocksgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:blocksgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\tetris.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -31,22 +35,12 @@
       "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:position.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\miojo\\AppData\\Local\\Temp\\.vsdbgsrc\\3f9ee16c279639f7bd1433ef87346e9f56aec711b7cc9dd4120384572640a232\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\rotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:rotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\images.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:images.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\gridvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|solutionrelative:gridvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{73BC6AFC-F83D-4360-8D8A-96276091064C}|Tetris.csproj|c:\\users\\miojo\\source\\repos\\tetris\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -60,11 +54,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Tetris.csproj",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\Tetris.csproj",
               "RelativeDocumentMoniker": "Tetris.csproj",
@@ -78,31 +72,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAALEUAAAAAAAAAAAYwMgUAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-09-24T23:20:00.595Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "XamlReader.cs",
-              "DocumentMoniker": "C:\\Users\\miojo\\AppData\\Local\\Temp\\.vsdbgsrc\\3f9ee16c279639f7bd1433ef87346e9f56aec711b7cc9dd4120384572640a232\\XamlReader.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3f9ee16c279639f7bd1433ef87346e9f56aec711b7cc9dd4120384572640a232\\XamlReader.cs",
-              "ToolTip": "C:\\Users\\miojo\\AppData\\Local\\Temp\\.vsdbgsrc\\3f9ee16c279639f7bd1433ef87346e9f56aec711b7cc9dd4120384572640a232\\XamlReader.cs [Somente Leitura]",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\3f9ee16c279639f7bd1433ef87346e9f56aec711b7cc9dd4120384572640a232\\XamlReader.cs [Somente Leitura]",
-              "ViewState": "AgIAAMQBAAAAAAAAAAAlwNkBAAACAAAAAQAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T23:09:43.151Z",
-              "EditorCaption": " [Somente Leitura]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "Position.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\Position.cs",
               "RelativeDocumentMoniker": "Position.cs",
@@ -114,7 +83,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "BlocksGenerator.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\BlocksGenerator.cs",
               "RelativeDocumentMoniker": "BlocksGenerator.cs",
@@ -126,19 +95,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "GameGrid.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\GameGrid.cs",
               "RelativeDocumentMoniker": "GameGrid.cs",
               "ToolTip": "C:\\Users\\miojo\\source\\repos\\Tetris\\GameGrid.cs",
               "RelativeToolTip": "GameGrid.cs",
-              "ViewState": "AgIAAKMAAAAAAAAAAAAnwGEAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAALkAAAAAAAAAAAAhwMoAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T00:59:50.311Z"
+              "WhenOpened": "2024-08-30T00:59:50.311Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "GridValue.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\GridValue.cs",
               "RelativeDocumentMoniker": "GridValue.cs",
@@ -150,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "Images.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\Images.cs",
               "RelativeDocumentMoniker": "Images.cs",
@@ -162,20 +132,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\miojo\\source\\repos\\Tetris\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAAASwJUAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAANMAAAAAAAAAAIAwwNQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-30T00:27:02.845Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Tetris",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\Tetris.csproj",
               "RelativeDocumentMoniker": "Tetris.csproj",
@@ -187,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "Rotation.cs",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\Rotation.cs",
               "RelativeDocumentMoniker": "Rotation.cs",
@@ -210,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 10,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\miojo\\source\\repos\\Tetris\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
