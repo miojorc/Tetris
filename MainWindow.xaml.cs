@@ -51,18 +51,6 @@ namespace Tetris
       gameGrid = new GameGrid(rows, cols);
     }
 
-    private async Task Teste()
-    {
-      if(blocksGenerator.intBlocks[0] == 7) 
-      {
-        for(int i = 0; i < blocksGenerator.intBlocks.Length; i++) 
-        {
-          blocksGenerator.intBlocks[i] = random.Next(0,6);
-          await Task.Delay(1);
-        }
-      }
-    }
-
     private System.Windows.Controls.Image[,] SetupGrid()
     {
       System.Windows.Controls.Image[,] images = new System.Windows.Controls.Image[rows,cols];
@@ -164,30 +152,35 @@ namespace Tetris
       blocksGenerator.ImageBlock(true);
       DrawAfterBlocks();
       gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
-      while(true)
+      while(gameRuning)
       {
-        Testador.Text = points.ToString();
+        Pontos.Text = points.ToString();
         gameGrid.DrawActualBlock();
         DrawGrid();
         if(BlockInteractor())
         {
-          try
-          {
-            points+=10;
-            DrawAfterBlocks(); 
-            gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
-            blocksGenerator.ImageBlock(true);
-            CleanLines();
-          }
-          catch
-          {
-            break;
-          }
+          points+=10;
+          DrawAfterBlocks(); 
+          gameRuning = gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
+          blocksGenerator.ImageBlock(true);
+          CleanLines();
         }
         else 
         {
           gameGrid.DrawActualBlock(1);
           await Task.Delay(300);
+        }
+      }
+    }
+
+    private void ResetGame()
+    {
+      points = 0;
+      Pontos.Text = points.ToString();
+      for(int r = 0; r < rows; r++)
+      {
+        for(int c = 0; c < cols; c++){
+          gameGrid.Grid[r,c] = GridValue.Empty;
         }
       }
     }
@@ -200,8 +193,6 @@ namespace Tetris
       }
       if(!gameRuning)
       {
-        await Teste();
-
         gameRuning = true;
         for(int i = 0; i<3; i++)
         {
@@ -220,8 +211,8 @@ namespace Tetris
         await Task.Delay(300);
         Overlay.Visibility = Visibility.Visible;
 
-        points = 0;
-        OverlayText.Text = "PRESS ANY KEY TO RESTART";
+        OverlayText.Text = "   GAMEOVER!\nPRESS ANY KEY TO RESTART";
+        ResetGame();
 
         gameRuning = false;
       }

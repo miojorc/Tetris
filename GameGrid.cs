@@ -14,6 +14,7 @@ namespace Tetris
 
     public GridValue[,] Grid {get;}
     private GridValue Color;
+
     private int HalfCols { get; }
 
     private readonly Position[][] Blocks = new Position[7][]; 
@@ -73,7 +74,7 @@ namespace Tetris
       Blocks[6] = GBlock(IntToBlockConfig[6], 2); //Z
     }
 
-    public void GenerateBlock(int TB)
+    public bool GenerateBlock(int TB)
     {
       Setup();
 
@@ -81,7 +82,15 @@ namespace Tetris
       ActualBlockType = TB;
       ActualBlock = Blocks[TB];
 
+      for(int i = 0; i < ActualBlock.Length; i++)
+      {
+        if(Grid[ActualBlock[i].Row, ActualBlock[i].Col] != GridValue.Empty) {
+          return false;
+        }
+      }
+
       DrawBlock();
+      return true;
     }
 
     public void DeletObject()

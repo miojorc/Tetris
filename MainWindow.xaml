@@ -69,10 +69,10 @@
                  Margin="40,40,40,0" 
                  Grid.Row="1">
                 <TextBlock
-                     x:Name="Testador"
+                     x:Name="Pontos"
                      Margin="0,20,0,20"
                      FontSize="15"
-                     Text="Endpoints!!"
+                     Text="Points!!"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Center">
                 </TextBlock>
