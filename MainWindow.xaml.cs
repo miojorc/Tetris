@@ -40,6 +40,8 @@ namespace Tetris
 
     private BlocksGenerator blocksGenerator = new();
 
+    int points = 0;
+
     public MainWindow()
     {
       InitializeComponent();
@@ -138,7 +140,7 @@ namespace Tetris
         }
         if(deleteLine)
         {
-          Testador.Text += "B";
+          points+=1000;
           for(int c = 0; c < cols; c++){
             gameGrid.Grid[r,c] = GridValue.Empty;
           }
@@ -161,18 +163,26 @@ namespace Tetris
     {
       blocksGenerator.ImageBlock(true);
       DrawAfterBlocks();
-      gameGrid.GenerateBlock(0); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
+      gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
       while(true)
       {
+        Testador.Text = points.ToString();
         gameGrid.DrawActualBlock();
         DrawGrid();
         if(BlockInteractor())
         {
-          DrawAfterBlocks(); 
-          Testador.Text += "I";
-          gameGrid.GenerateBlock(0);
-          blocksGenerator.ImageBlock(true);
-          CleanLines();
+          try
+          {
+            points+=10;
+            DrawAfterBlocks(); 
+            gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
+            blocksGenerator.ImageBlock(true);
+            CleanLines();
+          }
+          catch
+          {
+            break;
+          }
         }
         else 
         {
@@ -210,6 +220,7 @@ namespace Tetris
         await Task.Delay(300);
         Overlay.Visibility = Visibility.Visible;
 
+        points = 0;
         OverlayText.Text = "PRESS ANY KEY TO RESTART";
 
         gameRuning = false;
@@ -232,6 +243,7 @@ namespace Tetris
           break;
         case Key.Down:
           gameGrid.DrawActualBlock(1);
+          points+=10;
           break;
         case Key.Space:
           while(true)
@@ -239,6 +251,7 @@ namespace Tetris
             if(!BlockInteractor(2))
             {
               gameGrid.DrawActualBlock(1);
+              points+=10;
             }
             else
             {
