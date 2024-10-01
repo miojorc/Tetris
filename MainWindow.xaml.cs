@@ -35,7 +35,6 @@ namespace Tetris
     private readonly System.Windows.Controls.Image[,] gridImages;
     private readonly System.Windows.Controls.Image[,] AfterBlocks;
 
-    private readonly Random random = new();
     private readonly GameGrid gameGrid;
 
     private BlocksGenerator blocksGenerator = new();
@@ -117,9 +116,10 @@ namespace Tetris
       return false;
     } 
 
-    void CleanLines()
+    private void CleanLines()
     {
       bool deleteLine = true;
+      int ExtraPoints = 1000;
       for(int r = 0; r < rows; r++)
       {
         deleteLine = true;
@@ -128,7 +128,8 @@ namespace Tetris
         }
         if(deleteLine)
         {
-          points+=1000;
+          points+=ExtraPoints;
+          ExtraPoints*=2;
           for(int c = 0; c < cols; c++){
             gameGrid.Grid[r,c] = GridValue.Empty;
           }
@@ -168,14 +169,13 @@ namespace Tetris
         else 
         {
           gameGrid.DrawActualBlock(1);
-          await Task.Delay(300);
+          await Task.Delay(280);
         }
       }
     }
 
     private void ResetGame()
     {
-      points = 0;
       Pontos.Text = points.ToString();
       for(int r = 0; r < rows; r++)
       {
@@ -193,6 +193,7 @@ namespace Tetris
       }
       if(!gameRuning)
       {
+        points = 0;
         gameRuning = true;
         for(int i = 0; i<3; i++)
         {
@@ -230,7 +231,7 @@ namespace Tetris
           if(!BlockInteractor(0, 1)) gameGrid.DrawActualBlock(0, 1);
           break;
         case Key.Up:
-          gameGrid.Rotate(true);
+          gameGrid.Rotate();
           break;
         case Key.Down:
           gameGrid.DrawActualBlock(1);
@@ -239,7 +240,7 @@ namespace Tetris
         case Key.Space:
           while(true)
           {
-            if(!BlockInteractor(2))
+            if(!BlockInteractor(1))
             {
               gameGrid.DrawActualBlock(1);
               points+=10;
@@ -251,6 +252,7 @@ namespace Tetris
           } 
           break;
       }
+      DrawGrid();
     }
 
     private void DrawGrid()

@@ -14,6 +14,7 @@ namespace Tetris
 
     public GridValue[,] Grid {get;}
     private GridValue Color;
+    private readonly MainWindow MainWindow;
 
     private int HalfCols { get; }
 
@@ -145,14 +146,12 @@ namespace Tetris
       Position[] Block = new Position[4];
       int arrayCont = 0;
 
-      //ele servia para rotacionar o bloco no rotate 2 e 3
-
       int esq = 0; //faz com que o bloco gire apartir da camada 'array'-esq
       int constSubtraction = -1;
 
       if(ActualBlockType == 5 || ActualBlockType == 4) esq = 1;
       if(ActualBlockType == 1) esq = (rotate == 1 || rotate == 3) ? 1 : 0;
-      if(ActualBlockType == 2) esq = (rotate == 0 || rotate == 2) ? 1 : 0; //já da para ver a regra da onde o esq original se aplica
+      if(ActualBlockType == 2) esq = (rotate == 0 || rotate == 2) ? 1 : 0; 
 
       if (ActualBlockType == 6) {
         esq = 2;
@@ -200,21 +199,26 @@ namespace Tetris
         }
       }
 
+      for (int i=0; i<Block.Length; i++)
+      {
+        if(Grid[Block[i].Row, Block[i].Col] != GridValue.Empty) 
+        {
+          if(rotate != 0) rotate -= 1;
+          else rotate = 3;
+          return ActualBlock;
+        }
+      }
+
       return Block;
     }
 
-    public void Rotate(bool Dir)
+    public void Rotate()
     {
-      if(ActualBlockType != 3)
-      {
-        if(rotate != 3 && Dir) rotate +=  1;
-        else if(rotate != 0 && !Dir) rotate -= 1;
-        else if (rotate == 3) rotate = 0;
-        else rotate = 3;
+      if(rotate != 3) rotate +=  1;
+      else  rotate = 0;
 
-        ActualBlock = RotateActualBlock(IntToBlockConfig[ActualBlockType]); //testar, ultima mudança foi mudar o tipo e dar retorno em vez de mudança no codigo
-        DrawBlock(); //ultima linha do RotateActualBlock
-      }
+      ActualBlock = RotateActualBlock(IntToBlockConfig[ActualBlockType]); //testar, ultima mudança foi mudar o tipo e dar retorno em vez de mudança no codigo
+      DrawBlock(); //ultima linha do RotateActualBlock
     }
   }
 }
