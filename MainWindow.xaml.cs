@@ -150,9 +150,9 @@ namespace Tetris
 
     private async Task RunGame()
     {
-      blocksGenerator.ImageBlock(true);
       DrawAfterBlocks();
-      gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]); //blocksGenerator.intBlocks[0] (para voltar caso eu mude)
+      gameGrid.GenerateBlock(blocksGenerator.preIntBlock); //blocksGenerator.preIntBlock (para voltar caso eu mude)
+      blocksGenerator.ImageBlock(true);
       while(gameRuning)
       {
         Pontos.Text = points.ToString();
@@ -162,7 +162,7 @@ namespace Tetris
         {
           points+=10;
           DrawAfterBlocks(); 
-          gameRuning = gameGrid.GenerateBlock(blocksGenerator.intBlocks[0]);
+          gameRuning = gameGrid.GenerateBlock(blocksGenerator.preIntBlock);
           blocksGenerator.ImageBlock(true);
           CleanLines();
         }

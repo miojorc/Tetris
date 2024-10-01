@@ -14,7 +14,6 @@ namespace Tetris
 
     public GridValue[,] Grid {get;}
     private GridValue Color;
-    private readonly MainWindow MainWindow;
 
     private int HalfCols { get; }
 
@@ -201,7 +200,13 @@ namespace Tetris
 
       for (int i=0; i<Block.Length; i++)
       {
-        if(Grid[Block[i].Row, Block[i].Col] != GridValue.Empty) 
+        if(Block[i].Row > Rows-1 || Block[i].Row < 0 || Block[i].Col > Cols-1 || Block[i].Col < 0) 
+        {
+          if(rotate != 0) rotate -= 1;
+          else rotate = 3;
+          return ActualBlock;
+        }
+        else if(Grid[Block[i].Row, Block[i].Col] != GridValue.Empty)
         {
           if(rotate != 0) rotate -= 1;
           else rotate = 3;

@@ -35,6 +35,7 @@ namespace Tetris
     private readonly Random random = new();
 
     public int[] intBlocks = {2,4,3};
+    public int preIntBlock = 0;
 
     public void RandomizeImageBlock()
     {
@@ -50,6 +51,7 @@ namespace Tetris
 
       if(change)
       {
+        preIntBlock = intBlocks[0];
         for(int i = 0; i < (intBlocks.Length-1); i++) 
         {
           intBlocks[i] = intBlocks[i+1];
